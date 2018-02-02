@@ -4,12 +4,16 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var useragent = require('express-useragent');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var novel = require('./routes/novel/index');
+var music = require('./routes/music/index');
 
 var app = express();
-
+// 添加useragent支持
+app.use(useragent.express());
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -24,6 +28,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/novel', novel);
+app.use('/music', music);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
