@@ -18,5 +18,15 @@ router.get('/search', function(req, res, next) {
     .catch(err => res.send(err))
 });
 
+router.get('/song', function(req, res, next) {
+  const songId = req.query.songId;
+  const vender = req.query.vender;
+  musicAPI.searchSong(vender, {
+      id: songId,
+    })
+    .then(response => res.send(response))
+    .catch(err => res.send(err))
+});
+
 module.exports = router;
 
