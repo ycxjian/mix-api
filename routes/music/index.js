@@ -8,8 +8,9 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/search', function(req, res, next) {
+  const keyword = req.query.key;
   musicAPI.searchSong('netease', {
-      key: '周杰伦',
+      key: keyword,
       limit: 10,
       page: 1,
     })
