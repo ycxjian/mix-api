@@ -21,7 +21,7 @@ router.get('/search', function(req, res, next) {
 router.get('/song', function(req, res, next) {
   const songId = req.query.songId;
   const vender = req.query.vender;
-  musicAPI.searchSong(vender, {
+  musicAPI.getSong(vender, {
       id: songId,
     })
     .then(response => res.send(response))
