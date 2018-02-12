@@ -34,7 +34,7 @@ router.get('/index',function(req, res, next) {
   var TKK = eval('((function(){var a\x3d27329834;var b\x3d2717736125;return 416738+\x27.\x27+(a+b)})())');
   var text = (req.query.text);
   var getTK = tk(text, TKK);
-  const url = 'http://translate.google.cn/translate_a/single?client=t&sl=zh-CN&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=2&ssel=3&tsel=0&kc=1&tk=' + getTK + '&q=' + text;
+  const url = 'http://translate.google.com/translate_a/t?client=t&sl=zh-CN&tl=en&hl=zh-CN&v=1.0&source=is&tk=' + getTK + '&q=' + text;
   superagent.get(url).then((json)=>{
     res.send(json);
   }).catch((err)=>{
