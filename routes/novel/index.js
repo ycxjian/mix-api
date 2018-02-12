@@ -1,7 +1,11 @@
 var express = require('express');
 var router = express.Router();
 var superagent = require('superagent');
-var util = require('util');
+var category = require('./api.js');
+var book = require('./api.js');
+var rank = require('./api.js');
+var comment = require('./api.js');
+var bookList = require('./api.js');
 
 router.get('/', function(req, res, next) {
   res.send(util.inspect(req));
@@ -15,11 +19,13 @@ router.get('/getip', function(req, res, next) {
   res.send(ip);
 });
 
-router.get('/getNovelByName', function(req, res, next) {
-  // superagent.get('http://api.zhuishushenqi.com/cats/lv2').then((response) => {
-    // res.send(response);
-  // })
-  res.send(req.useragent);
+// 获取带书籍数量的父级分类（包含子类）
+router.get('/category',function(req, res, next) {
+  superagent.get(category.categoryWithSubCategories).then((json)=>{
+    res.send(json);
+  }).catch((err)=>{
+    res.send(err);
+  });
 });
 
 module.exports = router;
