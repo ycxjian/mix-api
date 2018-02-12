@@ -62,7 +62,7 @@ router.get('/getip', function(req, res, next) {
 router.get('/category',function(req, res, next) {
 //   res.send(api.category.categoryWithSubCategories);
   superagent.get(api.category.categoryWithSubCategories).end((error,respond)=>{
-    res.send(respond);
+    res.send(JSON.parse(respond.text));
   });
 });
 
