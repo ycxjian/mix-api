@@ -11,6 +11,7 @@ var users = require('./routes/users');
 var novel = require('./routes/novel/index');
 var music = require('./routes/music/index');
 var weather = require('./routes/weather/index');
+var translate = require('./routes/translate/index');
 
 var app = express();
 // 添加useragent支持
@@ -32,6 +33,7 @@ app.use('/users', users);
 app.use('/novel', novel);
 app.use('/music', music);
 app.use('/weather', weather);
+app.use('/translate', translate);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
