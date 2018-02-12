@@ -3,7 +3,7 @@ var router = express.Router();
 var superagent = require('superagent');
 
 router.get('/', function(req, res, next) {
-  res.send('nihao');
+  res.send(req);
 });
 
 router.get('/getNovelByName', function(req, res, next) {
