@@ -41,5 +41,33 @@ Api.prototype.getWeatherNow = function(location) {
   });
 }
 
+// 获取未来5天的天气
+Api.prototype.getFuture = function(location) {
+  var params = this.getSignatureParams();
+  params.location = location;
+  params.unit = 'c';
+  params.start = 0;
+  params.days = 5;
+
+  // 将构造的 URL 直接在后端 server 内调用
+  return request({
+    url: URL + 'weather/daily.json',
+    qs : params,
+    json : true
+  });
+}
+
+// 获取生活指数
+Api.prototype.getLife = function(location) {
+  var params = this.getSignatureParams();
+  params.location = location;
+
+  // 将构造的 URL 直接在后端 server 内调用
+  return request({
+    url: URL + 'life/suggestion.json',
+    qs : params,
+    json : true
+  });
+}
 
 module.exports = Api;
