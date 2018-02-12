@@ -8,7 +8,7 @@ express实现的后端常用api，暂时还没有内容哦。
 > * [小说](#novel)
 
 ## 功能说明
-### <span id="translate">谷歌翻译</span>
+### <span id="translate">translate</span>
 由于网络原因，阿里云服务器访问超时，translate.google.cn又不稳定，所以接口不稳定，其中的/routes/translate/index.js中的参数获取已经写出，可以参考。
 
 ### <span id="weather">天气</span>
