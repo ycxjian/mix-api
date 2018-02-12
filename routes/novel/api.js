@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   category: {
     // 带书籍数量的父分类
     categoryWithBookCount: 'http://api.zhuishushenqi.com/cats/lv2/statistics',
