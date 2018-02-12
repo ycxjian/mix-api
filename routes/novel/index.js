@@ -21,8 +21,8 @@ router.get('/getip', function(req, res, next) {
 
 // 获取带书籍数量的父级分类（包含子类）
 router.get('/category',function(req, res, next) {
-  superagent.get(category.categoryWithSubCategories).then((json)=>{
-    res.send(json);
+  superagent.get(category.categoryWithSubCategories).end((request,respond)=>{
+    res.send(respond);
   }).catch((err)=>{
     res.send(err);
   });
