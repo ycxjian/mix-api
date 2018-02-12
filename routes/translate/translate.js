@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 var express = require('express');
 var router = express.Router();
 var superagent = require('superagent');
@@ -59,6 +58,4 @@ router.get('/', function (req, res, next) {
 
 
 module.exports = router;
-=======
 
->>>>>>> 194d889152bc7ba4a34c39fac7fb6d4ebbf0de6a
