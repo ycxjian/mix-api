@@ -2,7 +2,7 @@
 var express = require('express');
 var router = express.Router();
 var superagent = require('superagent');
-var weatherApi = require('./api.js');
+var Api = require('./api.js');
 
 router.get('/', function(req, res, next) {
   res.send('天气');
@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/weather',function(req, res, next) {
   const location = req.query.location;
-  const weatherApi = new weatherApi('U3816B37F8','p3zpi4nz7b0k0ugd');
+  const weatherApi = new Api('U3816B37F8','p3zpi4nz7b0k0ugd');
   const weatherJson = weatherApi.getWeatherNow(location);
   res.send(weatherJson);
 });
