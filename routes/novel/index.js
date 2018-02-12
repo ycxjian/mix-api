@@ -50,6 +50,10 @@ router.get('/', function(req, res, next) {
   res.send(util.inspect(req));
 });
 
+router.get('/api/:test', function(req, res, next) {
+  res.send(req.params.test);
+});
+
 router.get('/getip', function(req, res, next) {
   var ip = (req.headers['x-forwarded-for'] ||
      req.connection.remoteAddress ||
