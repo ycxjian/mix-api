@@ -42,7 +42,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/api/:name', function(req, res, next) {
   const name = req.params.name;
-  if (Object().keys(api).indexOf(name) < 0) {
+  if (Object.keys(api).indexOf(name) < 0) {
     res.send('err');
   } else {
     const url = api[name];
