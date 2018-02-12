@@ -11,8 +11,11 @@ router.get('/', function(req, res, next) {
 router.get('/weather',function(req, res, next) {
   const location = req.query.location;
   const weatherApi = new Api('U3816B37F8','p3zpi4nz7b0k0ugd');
-  const weatherJson = weatherApi.getWeatherNow(location);
-  res.send(weatherJson);
+  weatherApi.getWeatherNow(location).then((json)=>{
+    res.send(json);
+  }).catch((err)=>{
+    res.send(err);
+  });
 });
 
 module.exports = router;
