@@ -1,9 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var superagent = require('superagent');
+var util = require('util');
 
 router.get('/', function(req, res, next) {
-  res.send(JSON.stringify(req));
+  res.send(util.inspect(req));
 });
 
 router.get('/getNovelByName', function(req, res, next) {
