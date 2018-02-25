@@ -2,6 +2,9 @@ var express = require('express');
 var crypto = require('crypto');
 var router = express.Router();
 var superagent = require('superagent');
+var http = require('http')
+const NodeCache = require("node-cache");
+const myCache = new NodeCache();
 
 router.get('/', function(req, res, next) {
   res.send('谷歌翻译');
@@ -12,14 +15,15 @@ router.get('/youdaotest',function(req, res, next) {
   try {
     signKey = myCache.get("signKey", true);
   } catch (err) {
-    superagent('GET', 'http://shared.ydstatic.com/fanyi/newweb/v1.0.8/scripts/newweb/fanyi.min.js')
-      .end(function(err, response) {
-        if (response.ok) {
-          signKey = '';
-          res.send(response);
-          myCache.set("signKey", signKey, 86400);
-        }
-      });
+    http.get('http://shared.ydstatic.com/fanyi/newweb/v1.0.8/scripts/newweb/fanyi.min.js', function (response) {
+    response.setEncoding('binary');  //二进制binary
+    var Data = '';
+    response.on('data', function (data) {    //加载到内存
+        Data += data;
+    }).on('end', function () {          //加载完
+        res.send(Data);
+    })
+})
   }
 });
 
