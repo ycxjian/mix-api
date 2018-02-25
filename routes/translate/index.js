@@ -26,21 +26,13 @@ router.get('/youdao', function(req, res, next) {
     .post('http://fanyi.youdao.com/translate?smartresult=dict&smartresult=rule')
     .send({
       i: text,
-      from: "AUTO",
-      to: "AUTO",
-      smartresult: "dict",
       client: 'fanyideskweb',
       salt: salt,
-      sign: sign,
-      doctype: "json",
-      version: "2.1",
-      keyfrom: "fanyi.web",
-      action: "FY_BY_REALTIME",
-      typoResult: false
+      sign: sign
     })
     .end(function(request,response) {
       if (response.ok) {
-        res.send(JSON.stringify(request));
+        res.send(JSON.stringify(response));
       } else {
         res.send(response.text);
       }
