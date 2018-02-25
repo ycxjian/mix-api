@@ -23,7 +23,7 @@ router.get('/youdao', function(req, res, next) {
     //   sign: sign,
     // });
   superagent
-    .post('http://fanyi.youdao.com/translate_o?smartresult=dict&smartresult=rule')
+    .post('http://fanyi.youdao.com/translate?smartresult=dict&smartresult=rule')
     .send({
       i: text,
       from: "AUTO",
