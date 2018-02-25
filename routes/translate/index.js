@@ -11,22 +11,30 @@ router.get('/', function(req, res, next) {
 router.get('/youdao', function(req, res, next) {
   const text = req.query.text;
   const salt = "" + ((new Date).getTime() + parseInt(10 * Math.random(), 10));
-  const t = 
-  superagent.post('http://fanyi.youdao.com/translate_o?smartresult=dict&smartresult=rule')
+  // const salt = '1519528784301';
+  const sign = crypto
+    .createHash('md5')
+    .update("fanyideskweb" + text + salt + "ebSeFb%=XZ%T[KZ)c(sy!", 'utf-8')
+    .digest('hex');
+    // res.send({
+    //   i: text,
+    //   client: 'fanyideskweb',
+    //   salt: salt,
+    //   sign: sign,
+    // });
+  superagent
+    .post('http://fanyi.youdao.com/translate_o?smartresult=dict&smartresult=rule')
     .send({
       i: text,
       client: 'fanyideskweb',
       salt: salt,
-      sign: crypto
-        .createHash('md5')
-        .update("fanyideskweb" + text + salt + "ebSeFb%=XZ%T[KZ)c(sy!", 'utf-8')
-        .digest('hex'),
+      sign: sign,
     })
     .end(function(response) {
       if (response.ok) {
         res.send(JSON.stringify(response.body));
       } else {
-        alert('Oh no! error ' + response.text);
+        res.send(response.text);
       }
     });
 });
