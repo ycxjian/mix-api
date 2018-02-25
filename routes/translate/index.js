@@ -23,7 +23,7 @@ router.get('/youdaotest',function(req, res, next) {
     }).on('end', function () {          //加载完
         var pattern = /t\+i\+\"(.*?)\)\;/;
         const data1 = (Data.match(pattern));
-        res.send(data1.replace('t+i+"','').replace(");",'');
+        res.send(data1.replace('t+i+"','').replace(");",''));
     })
 })
   }
