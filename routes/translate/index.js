@@ -21,7 +21,9 @@ router.get('/youdaotest',function(req, res, next) {
     response.on('data', function (data) {    //加载到内存
         Data += data;
     }).on('end', function () {          //加载完
-        res.send(Data);
+        var pattern = /t\+i\+\"(.*?)\)\;/;
+        const data1 = (Data.match(pattern));
+        res.send(data1.replace('t+i+"','').replace(");",'');
     })
 })
   }
