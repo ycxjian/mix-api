@@ -38,9 +38,9 @@ router.get('/youdao', function(req, res, next) {
       action: "FY_BY_REALTIME",
       typoResult: false
     })
-    .end(function(err,response) {
+    .end(function(request,response) {
       if (response.ok) {
-        res.send(JSON.stringify(response));
+        res.send(JSON.stringify(request));
       } else {
         res.send(response.text);
       }
