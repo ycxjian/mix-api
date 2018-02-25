@@ -7,6 +7,22 @@ router.get('/', function(req, res, next) {
   res.send('谷歌翻译');
 });
 
+router.get('/youdaotest',function(req, res, next) {
+  const signKey = '';
+  try {
+    signKey = myCache.get("signKey", true);
+  } catch (err) {
+    superagent('GET', 'http://shared.ydstatic.com/fanyi/newweb/v1.0.8/scripts/newweb/fanyi.min.js')
+      .end(function(err, response) {
+        if (response.ok) {
+          signKey = '';
+          res.send(response);
+          myCache.set("signKey", signKey, 86400);
+        }
+      });
+  }
+});
+
 // 有道翻译接口
 router.get('/youdao', function(req, res, next) {
   const text = req.query.text;
