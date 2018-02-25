@@ -40,7 +40,7 @@ router.get('/youdao', function(req, res, next) {
     })
     .end(function(request,response) {
       if (response.ok) {
-        res.send(JSON.stringify(response));
+        res.send(JSON.stringify(response.body));
       } else {
         res.send(response.text);
       }
