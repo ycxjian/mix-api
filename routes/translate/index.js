@@ -10,33 +10,31 @@ router.get('/', function(req, res, next) {
   res.send('谷歌翻译');
 });
 
-router.get('/youdaotest',function(req, res, next) {
-  var signKey = '';
-  try {
-    signKey = myCache.get("signKey", true);
-  } catch (err) {
-    http.get('http://shared.ydstatic.com/fanyi/newweb/v1.0.8/scripts/newweb/fanyi.min.js', function (response) {
-    response.setEncoding('binary');  //二进制binary
-    var Data = '';
-    response.on('data', function (data) {    //加载到内存
-        Data += data;
-    }).on('end', function () {          //加载完
-        var pattern = /t\+i\+\"(.*?)\)\;/;
-        const data1 = (Data.match(pattern));
-        res.send(data1[0].replace('t+i+"','').replace('");',''));
-    })
-})
-  }
-});
-
 // 有道翻译接口
 router.get('/youdao', function(req, res, next) {
   const text = req.query.text;
   const salt = "" + ((new Date).getTime() + parseInt(10 * Math.random(), 10));
   // const salt = '1519528784301';
+  var signKey = '';
+  try {
+    signKey = myCache.get("signKey", true);
+  } catch (err) {
+    http.get('http://shared.ydstatic.com/fanyi/newweb/v1.0.8/scripts/newweb/fanyi.min.js', function(response) {
+      response.setEncoding('binary'); //二进制binary
+      var Data = '';
+      response.on('data', function(data) { //加载到内存
+        Data += data;
+      }).on('end', function() { //加载完
+        var pattern = /t\+i\+\"(.*?)\)\;/;
+        const data1 = (Data.match(pattern));
+        signKey = data1[0].replace('t+i+"', '').replace('");', '');
+        myCache.set("signKey", signKey, 86400);
+      })
+    })
+  }
   const sign = crypto
     .createHash('md5')
-    .update("fanyideskweb" + text + salt + "ebSeFb%=XZ%T[KZ)c(sy!", 'utf-8')
+    .update("fanyideskweb" + text + salt + signKey, 'utf-8')
     .digest('hex');
     // res.send({
     //   i: text,
