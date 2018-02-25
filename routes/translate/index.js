@@ -22,7 +22,8 @@ router.get('/youdao', function(req, res, next) {
     //   salt: salt,
     //   sign: sign,
     // });
-  superagent("POST",'http://fanyi.youdao.com/translate?smartresult=dict&smartresult=rule')
+  superagent("POST", 'http://fanyi.youdao.com/translate?smartresult=dict&smartresult=rule')
+    .type('form')
     .send({
       i: text,
       client: 'fanyideskweb',
