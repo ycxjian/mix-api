@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/youdaotest',function(req, res, next) {
-  const signKey = '';
+  var signKey = '';
   try {
     signKey = myCache.get("signKey", true);
   } catch (err) {
