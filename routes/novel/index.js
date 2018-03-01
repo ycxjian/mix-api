@@ -140,13 +140,14 @@ router.get('/api/:name', function(req, res, next) {
   if (Object.keys(api).indexOf(name) < 0) {
     res.send('err');
   } else {
-    var url = api[name];
-    if(api[name].type === 'query') {
-      superagent.get(url).query(req.query).end((error, respond) => {
+    var apiInfo = api[name];
+    if(apiInfo.type === 'query') {
+      superagent.get(apiInfo.url).query(req.query).end((error, respond) => {
         res.send(JSON.parse(respond.text));
       });
     } else {
-      url = url.replace(':param',req.query.param);
+      const url = apiInfo.url.replace(':param',req.query['param']);
+      res.send(url);
       superagent.get(url).end((error, respond) => {
         res.send(JSON.parse(respond.text));
       });
