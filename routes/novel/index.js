@@ -124,7 +124,7 @@ var api = {
   },
   detail: {
     url: 'http://api.zhuishushenqi.com/book-list/:param',
-    type: 'params'
+    type: 'params',
     urlparams: {
       param: 'id'
     }
