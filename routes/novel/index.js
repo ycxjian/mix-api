@@ -147,7 +147,6 @@ router.get('/api/:name', function(req, res, next) {
       });
     } else {
       const url = apiInfo.url.replace(':param',req.query['param']);
-      res.send(url);
       superagent.get(url).end((error, respond) => {
         res.send(JSON.parse(respond.text));
       });
