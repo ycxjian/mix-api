@@ -40,7 +40,7 @@ var api = {
   }, // query ?author=忘语
   // 书籍章节内容
   bookChapters: {
-    url: 'http://api.zhuishushenqi.com/atoc/:param',
+    url: 'http://api.zhuishushenqi.com/mix-atoc/:param?view=chapters',
     type: 'params',
     urlparams: {
       param: 'id',
@@ -116,9 +116,9 @@ var api = {
     type: 'query',
     querystring: {
       sort: '(collectorCount | created)',
-      duration: '(last - seven - days | all)',
+      duration: '本周最热：duration=last-seven-days&sort=collectorCount,最新发布：duration=all&sort=created,最多收藏：duration=all&sort=collectorCount',
       gender: '(male | female)',
-      tag: '(有点多)',
+      tag: '都市、古代、架空、重生、玄幻、网游',
       start:0
     }
   },
