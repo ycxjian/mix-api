@@ -40,7 +40,7 @@ var api = {
   }, // query ?author=忘语
   // 书籍章节内容
   bookChapters: {
-    url: 'http://api.zhuishushenqi.com/mix-atoc/:param?view=chapters',
+    url: 'http://api.zhuishushenqi.com/toc/:param?view=chapters',
     type: 'params',
     urlparams: {
       param: 'id',
