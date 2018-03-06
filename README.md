@@ -17,3 +17,6 @@ express实现的后端常用api，暂时还没有内容哦。
 > * 根据location获取现在的天气：get /weather/now?location=hangzhou
 > * 根据location获取未来3天的天气：get /weather/future?location=hangzhou
 > * 根据location获取现在的生活指数：get /weather/life?location=hangzhou
+
+### <span id="小说">小说</span>
+> * 具体接口请求参考：routes/novel/index.js
