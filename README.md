@@ -25,4 +25,4 @@ express实现的后端常用api，TODO列表如下。
 > * 根据location获取现在的生活指数：get /weather/life?location=hangzhou
 
 ### <span id="小说">小说</span>
-> * 具体接口请求参考：[routes/novel/index.js](https://github.com/shock-lee/mix-api/blob/master/routes/novel/index.js?_blank)
+> * 具体接口请求参考：<a href="https://github.com/shock-lee/mix-api/blob/master/routes/novel/index.js" target="_blank">routes/novel/index.js</a>
