@@ -13,6 +13,7 @@ var music = require('./routes/music/index');
 var weather = require('./routes/weather/index');
 var translate = require('./routes/translate/index');
 var yiwen = require('./routes/yiwen/index');
+var delivery = require('./routes/express/index');
 
 var app = express();
 // 添加useragent支持
@@ -36,6 +37,7 @@ app.use('/music', music);
 app.use('/weather', weather);
 app.use('/translate', translate);
 app.use('/yiwen', yiwen);
+app.use('/express', delivery);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
