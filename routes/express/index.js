@@ -3,7 +3,8 @@ var router = express.Router();
 var superagent = require('superagent');
 
 router.get('/', function(req, res, next) {
-  var url = 'http://www.kuaidi.com/index-ajaxselectcourierinfo-' + req.query.nu + '-'+ req.query.co +'.html';
+  const co = req.query.co || '';
+  var url = 'http://www.kuaidi.com/index-ajaxselectcourierinfo-' + req.query.nu + '-'+ co +'.html';
   superagent.get(url).then((json) => {
     res.send(json.text);
   }).catch((err) => {
