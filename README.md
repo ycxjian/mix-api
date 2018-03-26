@@ -2,10 +2,11 @@
 express实现的后端常用api，TODO列表如下。
 本项目数据来源于网络，仅用于学习交流。请勿商用。
 ## 功能描述：
-> * - [x]  [天气](#天气)
 > * - [x]  [翻译](#翻译)
-> * - [ ]  [音乐](#音乐)
+> * - [x]  [天气](#天气)
+> * - [x]  [每日一文](#每日一文)
 > * - [x]  [小说](#小说)
+> * - [ ]  [音乐](#音乐)
 > * - [ ]  [快递](#快递)
 > * - [ ]  [漫画](#漫画)
 > * - [ ]  [视频](#视频)
@@ -24,6 +25,11 @@ express实现的后端常用api，TODO列表如下。
 > * 根据location获取现在的天气：get /weather/now?location=hangzhou
 > * 根据location获取未来3天的天气：get /weather/future?location=hangzhou
 > * 根据location获取现在的生活指数：get /weather/life?location=hangzhou
+
+### <span id="每日一文">每日一文</span>
+> * 当天：get /yiwen/或者/yiwen
+> * 随机：get /yiwen/random
+> * 某天：get /yiwen/date?date=20180326
 
 ### <span id="小说">小说</span>
 > * 具体接口请求参考：<a href="https://github.com/shock-lee/mix-api/blob/master/routes/novel/index.js" target="_blank">routes/novel/index.js</a>
