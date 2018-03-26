@@ -2,6 +2,15 @@ var express = require('express');
 var router = express.Router();
 var superagent = require('superagent');
 
+router.get('/', function(req, res, next) {
+  var url = 'https://interface.meiriyiwen.com/article/today?dev=1';
+  superagent.get(url).then((json) => {
+    res.send(json);
+  }).catch((err) => {
+    res.send(err);
+  });
+});
+
 router.get('/:arg', function(req, res, next) {
   var url = 'https://interface.meiriyiwen.com/article/today?dev=1';
   if (req.params.arg === 'random') {
