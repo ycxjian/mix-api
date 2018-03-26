@@ -25,3 +25,5 @@ router.get('/:arg', function(req, res, next) {
     res.send(err);
   });
 });
+
+module.exports = router;
