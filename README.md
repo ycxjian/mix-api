@@ -7,7 +7,7 @@ express实现的后端常用api，TODO列表如下。
 > * - [x]  [每日一文](#每日一文)
 > * - [x]  [小说](#小说)
 > * - [ ]  [音乐](#音乐)
-> * - [ ]  [快递](#快递)
+> * - [x]  [快递](#快递)
 > * - [ ]  [漫画](#漫画)
 > * - [ ]  [视频](#视频)
 > * - [ ]  [动图](#动图)
@@ -33,3 +33,6 @@ express实现的后端常用api，TODO列表如下。
 
 ### <span id="小说">小说</span>
 > * 具体接口请求参考：<a href="https://github.com/shock-lee/mix-api/blob/master/routes/novel/index.js" target="_blank">routes/novel/index.js</a>
+
+### <span id="快递">快递</span>
+> * 接口：get /express?co=&nu=.co是公司<a href="https://github.com/shock-lee/mix-api/blob/master/routes/express/company.json">类型码</a>,nu是快递单号
