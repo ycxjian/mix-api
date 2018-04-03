@@ -4,8 +4,7 @@ var superagent = require('superagent');
 
 router.get('/', function(req, res, next) {
   superagent
-    .get('http://raw.githubusercontent.com/bangumi-data/bangumi-data/master/dist/data.json')
-    .set('rejectUnauthorized', false)
+    .get('https://raw.githubusercontent.com/bangumi-data/bangumi-data/master/dist/data.json')
     .end(function(err, response) {
       res.send(response);
     });
