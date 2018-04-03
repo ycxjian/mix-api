@@ -5,8 +5,9 @@ const NodeCache = require("node-cache");
 const myCache = new NodeCache();
 
 router.get('/', function(req, res, next) {
-  const jsonData = myCache.get("jsonData", true);
-  if(!jsonData) {
+  try {
+    const jsonData = myCache.get("jsonData", true);
+  } catch( geterr ){
     superagent
     .get('https://raw.githubusercontent.com/bangumi-data/bangumi-data/master/dist/data.json')
     .end(function(err, response) {
