@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
     .get('http://raw.githubusercontent.com/bangumi-data/bangumi-data/master/dist/data.json')
     .set('rejectUnauthorized', false)
     .end(function(err, response) {
-      res.send(err);
+      res.send(response);
     });
 });
 
