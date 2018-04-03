@@ -11,9 +11,12 @@ router.get('/', function(req, res, next) {
       .get('https://raw.githubusercontent.com/bangumi-data/bangumi-data/master/dist/data.json')
       .end(function(err, response) {
         myCache.set("jsonData", response.text, 86400);
+        jsonData = myCache.get("jsonData");
+        res.send(jsonData);
       });
+  } else {
+    res.send(jsonData);
   }
-  res.send(jsonData);
 });
 
 module.exports = router;
