@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
       myCache.set("jsonData", response.text, 86400);
     });
   }
-  res.send(response.text);
+  res.send(jsonData);
 });
 
 module.exports = router;
