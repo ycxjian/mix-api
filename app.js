@@ -14,6 +14,7 @@ var weather = require('./routes/weather/index');
 var translate = require('./routes/translate/index');
 var yiwen = require('./routes/yiwen/index');
 var delivery = require('./routes/express/index');
+var bangumi = require('./routes/bangumi/index');
 
 var app = express();
 // 添加useragent支持
@@ -38,6 +39,7 @@ app.use('/weather', weather);
 app.use('/translate', translate);
 app.use('/yiwen', yiwen);
 app.use('/express', delivery);
+app.use('/bangumi', bangumi);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
