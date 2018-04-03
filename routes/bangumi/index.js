@@ -5,7 +5,7 @@ const NodeCache = require("node-cache");
 const myCache = new NodeCache();
 
 router.get('/', function(req, res, next) {
-  const jsonData = myCache.get("jsonData");
+  var jsonData = myCache.get("jsonData");
   if (jsonData === undefined) {
       superagent
       .get('https://raw.githubusercontent.com/bangumi-data/bangumi-data/master/dist/data.json')
@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
         myCache.set("jsonData", response.text, 86400);
       });
   }
-  res.send(typeof jsonData);
+  res.send(jsonData);
 });
 
 module.exports = router;
