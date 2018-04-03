@@ -6,7 +6,7 @@ router.get('/', function(req, res, next) {
   superagent
     .get('https://raw.githubusercontent.com/bangumi-data/bangumi-data/master/dist/data.json')
     .end(function(err, response) {
-      res.send(response);
+      res.send(response.text);
     });
 });
 
